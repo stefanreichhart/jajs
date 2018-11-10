@@ -1,2 +1,2 @@
-# Practically oriented JavaScript patterns
-Practically oriented JavaScript patterns
+# Javascript & Java
+Past + Future Changes
