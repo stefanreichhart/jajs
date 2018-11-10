@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>02 Java</title>
+
+    <link rel="icon" href="../img/zuehlke_logo.jpg">
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/zuehlke.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../lib/css/atom-one-dark.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <section>
+                <h1>Java 9 - 11</h1>
+                <p><cite>"unspectacular, boring, long-overdue"</cite></p>
+            </section>
+            <section>
+                <h2>Overview: Java 9 - 11</h2>
+                <p>Garbage Collection</p>
+                <ul>
+                    <li>Bugfixes on G1-GC</li>
+                    <li>Performance/Footprint of G1-GC</li>
+                    <li>New Epsilon-GC (noop)</li>
+                    <li>New Z-GC (experimental, scalable to TBs)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Overview: Java 9 - 11</h2>
+                <p>Cryptography, Encryption, Security</p>
+                <ul>
+                    <li>Elliptic curves</li>
+                    <li>Deprecated: RC4 Stream Cipher</li>
+                    <li>ChaCha20 Stream Cipher</li>
+                    <li>TLS 1.3</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Overview: Java 9 - 11</h2>
+                <p>Miscellanea</p>
+                <ul>
+                    <li>Jigsaw (Modularisierung, Paketierung)</li>
+                    <li>Cleanup &amp; retirement of old/deprecated APIs</li>
+                    <li>Retired: Java EE + Corba</li>
+                    <li>Retired: Nashorn Javascript Engine</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Java 9 - 11</h1>
+                <ul>
+                    <li>Local Type Inference</li>
+                    <li>Alternative Memory Architectures</li>
+                    <li>String API</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <p><code>var</code> keyword (not reserved)</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var number = 5; // int
+                    var bitNumber = BigDecimal.ONE; // BigDecimal
+                    var String = "Hello World !"; // String
+                    var list = new ArrayList< String >(); // List< String >
+                    var var = true; // Boolean
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var path = Paths.get("./myfile.txt"); // Path
+                    var lines = Files.lines(path); // Stream< String >
+                    var length = lines.count(); // long
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var list = new ArrayList< >(); // List< String >
+                    list.add("Hello World!");
+
+                    // for loop
+                    for (var string : list) {
+                        System.out.println(string);
+                    }
+
+                    // foreach, lambda-expression
+                    list.forEach((var string) -> System.out.println(string));
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference - Caveats !</h2>
+                <p>Type cannot change after initialization</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var number = 5; // int
+
+                    // Compiler-Error: lossy Type conversion
+                    number = 7L;
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference - Caveats !</h2>
+                <p>Type cannot change after initialization</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var bitNumber = BigDecimal.ONE;
+
+                    // Compiler-Error: incompatible types
+                    bitNumber = BigInteger.ONE;
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference - Caveats !</h2>
+                <p>Not/Never uninitialized</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    // Compiler-Error: uninitialized type
+                    var number;
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference - Caveats !</h2>
+                <p>Tracking down return types ...</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    var value = someFunction(); // ?
+                </code></pre>
+                <div class="tip fragment">Useful ? Confusing ?</div>
+            </section>
+            <!--
+            <section>
+                <h2>Garbage Collection</h2>
+                <ul>
+                    <li>G1 is default for Java 9+ (parallel, single-threaded)</li>
+                    <li>Very bad performance for fast growing concurrent collections</li>
+                    <li>Change: parallel, multi-threaded</li>
+                </ul>
+                <p><code>-XX:ParallelGCTheads</code></p>
+            </section>
+            <section>
+                <h2>CDS (Class-Data-Sharing)</h2>
+                <ul>
+                    <li>Share Class-Metadata across multiple JVM processes</li>
+                    <li>Smaller footprint (approx 10%) </li>
+                    <li>Faster startup</li>
+                </ul>
+                <p><code>-XX:+UseAppCDS -XX:+SharedArchiveFile=...</code></p>
+                <div class="tip fragment">Useful ?</div>
+            </section>
+            -->
+            <section>
+                <h2>Object Heap</h2>
+                <p>Until now: Object-Heap only for DRAM</p>
+                <ul>
+                    <li>Alternative Memory Architectures (non-DRAM)</li>
+                    <li>Support for NV-DIMM (non-volatile)</li>
+                    <li>Warning: Only for non-volatile data !</li>
+                </ul>
+                <div class="tip fragment">Nice</div>
+            </section>
+            <section>
+                <h2>String API</h2>
+                <p>strip*()</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    String value = " Hello World ! ";
+                    System.out.println(value.trim().equals("Hello World !"));
+
+                    // Java 11+
+                    System.out.println(value.strip().equals("Hello World !"));
+                    System.out.println(value.stripLeading().equals("Hello World ! "));
+                    System.out.println(value.stripTrailing().equals(" Hello World !"));
+                </code></pre>
+            </section>
+            <section>
+                <h2>String API</h2>
+                <p>lines()</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    String multi = " Hello\n World\n !\n ";
+
+                    // before Java 8
+                    for (String line : multi.split("\n")) {
+                        System.out.println(line);
+                    }
+
+                    // Java 8+
+                    Stream.of(multi.split("\n"))
+                            .forEach(System.out::println);
+
+                    // Java 11+
+                    multi.lines().forEach(System.out::println);
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h1>Java 12</h1>
+                <p><cite>"long-overdue"</cite></p>
+            </section>
+            <section>
+                <h2>Java 12</h2>
+                <p>early access preview <code>--enable-preview</code></p>
+                <ul>
+                    <li>Raw Strings</li>
+                    <li>switch-expressions</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Raw Strings</h2>
+                <p>Almost all languages support Raw-Strings</p>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    String script = "function hello() {\n" +
+                    "   print(\'\"Hello World\"\');\n" +
+                    "}\n" +
+                    "\n" +
+                    "hello();\n";
+                </code></pre>
+                <p>SQL queries, Templating, Formatted Output, ...</p>
+            </section>
+            <section>
+                <h2>Raw Strings - backticks `...`</h2>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    String script = `function hello() {
+                        print('"Hello World"');
+                     }
+
+                     hello();
+                    `;
+                </code></pre>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    `\n`.equals("\\n");
+                    `\n`.length == 2;
+                    `\n`.unescape().length == 1;
+                    `❤`.equals("\u2764")
+                </code></pre>
+                <p>""" Groovy, Kotlin, Python, Scala, Swift, Smalltalk """</p>
+                <p>` Go, Javascript `</p>
+            </section>
+            <section>
+                <h2>switch-expression</h2>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    int value = -1;
+                    switch (weekday) {
+                        case MONDAY:
+                        case TUESDAY:
+                        case WEDNESDAY:
+                        case THURDSAY:
+                            value = 1;
+                            break;
+                        case FRIDAY:
+                            value = 2;
+                            break;
+                        case SATURDAY:
+                        case SUNDAY:
+                            value = 3;
+                            break;
+                    }
+                </code></pre>
+                <div class="tip fragment">extraordinary verbose<br/>bad intention<br/>bad code style<br/>...</div>
+            </section>
+            <section>
+                <h2>switch-expression</h2>
+                <pre><code class="hljs java" data-trim data-noescape>
+                    int value = switch (weekday) {
+                        case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1
+                        case FRIDAY -> 2
+                        case SATURDAY, SUNDAY -> 3
+                    }
+                </code></pre>
+                <ul>
+                    <li>case allows multiple value matches</li>
+                    <li>"->" does an implicit break + return value</li>
+                    <li>break, continue will not work in switch-expression !</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Java 12 - No more ...</h2>
+                <ul>
+                    <li><strike>Java Applets</strike> (Java Web Start)</li>
+                    <li><strike>JavaFX (old versions)</strike> (JavaFX latest or Open-Source)</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Java Roadmap ...</h2>
+                <ul>
+                    <li><strike>Java as Desktop UI</strike>:<br/><strike>JavaFX latest</strike>, <strike>Swing</strike>, <strike>AWT</strike></li>
+                    <li>WebView, Mobile, Native</li>
+                </ul>
+            </section>
+            <section>
+                <h2>One more thing ...</h2>
+                <p>Changes for commercial use</p>
+                <ul>
+                    <li>Free updates/bugfixes only up to the next release</li>
+                    <li>No free bugfixes/upgrades for Java 8/9se after 2019</li>
+                    <li>Oracle-Account required for archive</li>
+                    <li>Payed licence for JRE embedded/commerical use</li>
+                </ul>
+            </section>
+        </section>
+        <section class="deck-slide">
+            <h1>Questions?</h1>
+        </section>
+    </div>
+</div>
+
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
