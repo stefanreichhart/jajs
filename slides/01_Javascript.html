@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>01 Javascript</title>
+
+    <link rel="icon" href="../img/zuehlke_logo.jpg">
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/zuehlke.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../lib/css/atom-one-dark.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <section>
+                <h2>EcmaScript / ES</h2>
+                <p>The scripting language specification which is implemented by <span class="code">JavaScript</span>. It
+                    is standardized by the organization
+                    <span class="code">Ecma International</span>.</p>
+                <aside class="notes">
+                    <ul>
+                        <li>Javascript is now a real language, sticking to a defined specification</li>
+                        <li>The specification is maintained by the commitee</li>
+                        <li>The commitee makes decisions and addresses issues</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h2>Ecma TC39 Committee</h2>
+                <p>All new proposals are considered by the <a href="https://github.com/tc39" target="_blank">Ecma TC39 committee</a>.
+                    They go through the following process (stages) before they are included in the Ecma Standard</p>
+                <ol>
+                    <li>Proposal</li>
+                    <li>Draft</li>
+                    <li>Candidate</li>
+                    <li>Finished</li>
+                </ol>
+                <aside class="notes">
+                    <ul>
+                        <li>Everything is made completely transparent and everybody may participate.</li>
+                        <li>Still the commitee makes the decisions</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <ul>
+                    <li>1996 - Javascript introduced</li>
+                    <li>1997 - ECMAScript (ES) introduced</li>
+                    <li>2009 - ES5 (5-th Generation)</li>
+                    <li class="c1"><b>2015 - ES6 (ES2015)</b></li>
+                    <li class="c1">2016 - ES7 (ES2016)</li>
+                    <li class="c1">2017 - ES2017</li>
+                    <li class="c1">2018 - ES2018</li>
+                    <li class="c2">ES.Next</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>All implementors are supposed to stick to the standard/specification</li>
+                        <li>There are huge gaps between browsers and their functionality.</li>
+                        <li>Realization of specification is not enforced and not done by the same pace</li>
+                        <li>Even ES6 is not fully supported by all browsers yet, despite the fact that the standard is
+                            already 2 years old. it is recommended using a transpiler like Babel et al.
+                        </li>
+                        <li> We will focus on the versions maked bold</li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>ES6 (ES2015) ......... ES2018</h2>
+                <ul>
+                    <li>Spreading</li>
+                    <li>Destructuring</li>
+                    <li>Promise > Observable > Async/Await + Reactive</li>
+                    <li>Regex Standard</li>
+                    <li>String</li>
+                    <li>Math</li>
+                    <li>Arrays</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Spreading</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/denifefuwo/edit?js,console" target="_blank">Objects</a></li>
+                    <li><a href="https://jsbin.com/vaxohosedo/edit?js,console" target="_blank">Arrays</a></li>
+                </ul>
+                <p>Use Cases: merge, copy/clone, concat</p>
+            </section>
+            <section>
+                <ul class="grid">
+                    <li>lodash.js</li>
+                    <li>Underscore.js</li>
+                    <li>$.extend()</li>
+                    <li>Object.extend()</li>
+                    <li>Object.assign()</li>
+                    <li>forEach(fnCopyProperties)</li>
+                    <li>...</li>
+                </ul>
+                <div class="tip fragment">no longer necessary ! => go native, remove unnecessary dependencies &amp; complexity</div>
+            </section>
+            <section>
+                <h2>Destructuring</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/zoyurocapa/edit?js,console" target="_blank">Objects</a></li>
+                    <li><a href="https://jsbin.com/jukitulupo/edit?js,console" target="_blank">Arrays</a></li>
+                    <li><a href="https://jsbin.com/cesubatali/edit?js,console" target="_blank">Properties / Rest</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Async/Await</h2>
+                <ul>
+                    <li><a href="https://codesandbox.io/s/211mxx4vlr">Promises, Observables, Async/Await</a></li>
+                    <li>Or go Reactive using concat-operator ?</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Regex Standard</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/tebewinubu/edit?js,console" target="_blank">Named Expressions</a></li>
+                    <li><a href="https://jsbin.com/bekafomeri/edit?js,console" target="_blank">Full Unicode Support</a></li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h2>String</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/bobihidayo/edit?js,console" target="_blank">Padding</a></li>
+                    <li><a href="https://jsbin.com/savuhomose/edit?js,console" target="_blank">Triming</a></li>
+                    <li><a href="https://jsbin.com/gejurapawa/edit?js,console" target="_blank">Multi-Byte</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Math</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/gapacitato/edit?js,console" target="_blank">Power / Exp</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Arrays</h2>
+                <ul>
+                    <li><a href="https://jsbin.com/vudokatuji/edit?js,console" target="_blank">Includes</a></li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>ES.Next (Stage-1)</h2>
+                <ul class="grid">
+                    <li>Native Observables</li>
+                    <li>Optional Chaining Operator</li>
+                    <li>Pipeline Operator</li>
+                    <li>Logical Assignment Operators</li>
+                    <li>Numerics</li>
+                    <li>Arrays</li>
+                    <li>Slice Notation</li>
+                    <li>private class elements</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Native Observables</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    observable.observe(fnObserver)
+                </code></pre>
+                <p>Implemented by various frameworks</br>(e.g Angular 2+, RxJS, rx-lite, ...)</p>
+            </section>
+            <section>
+                <h2>Optional Chaining Operator ".?"</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    let street = null;
+
+                    // chaining property access (today)
+                    street = user && user.address && user.address.street;
+
+                    // with optional chaining operator (proposal)
+                    street = user?.address?.street;
+                </code></pre>
+                <p>Optional Chaining Operator ".?" for properties, expressions and function-calls</p>
+            </section>
+            <section>
+                <h2>Pipeline Operator "|>"</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    let result = null;
+
+                    // pipelining functions (today)
+                    result = doFn4(doFn3(doFn2(doFn1(string)));
+
+                    // with pipline operator (proposal)
+                    result = string |> doFn1 |> doFn2 |> doFn3 |> doFn4;
+                </code></pre>
+                <p>Pipeline Operator for expressions, array functions, (async) function-calls</p>
+            </section>
+            <section>
+                <h2>Logical Assignment Operators</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    // or, and with assigments (today)
+                    a || (a = b);
+                    a && (a = b);
+
+                    // or, and assigment operators (proposal)
+                    a ||= b;
+                    a &&= b;
+                </code></pre>
+                <p>Inspired by Ruby. Works exactly as in Ruby</p>
+            </section>
+            <section>
+                <h2>Slice Notation</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    const arr = ['a', 'b', 'c', 'd'];
+
+                    console.log(arr[1:3] == arr.slice(1,3)); // ['b', 'c']
+                    console.log(arr[:2]  == arr.slice(0,2)); // ['a', 'b']
+                    console.log(arr[2:]  == arr.slice(2,4)); // ['c', 'd']
+                    console.log(arr[2:]  == arr.slice(2));   // ['c', 'd']
+
+                    console.log(arr[-1:] == arr.slice(3,4)); // ['d']
+                    console.log(arr[:-2] == arr.slice(0,3)); // ['a', 'b']
+                </code></pre>
+                <p>Slice Notation for arrays and objects</p>
+                <p>Inspired by Python. Works exactly as in Python</p>
+            </section>
+            <section>
+                <h2>Numerics: Groupings</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    const inhabitantsOfMunich = 1_464_301;
+                    const distanceEarthSunInKm = 149_600_000;
+                    const massOfElectronInKg = 9.109_383_56e-31;
+                    const words = 0xFAB_F00D;
+
+                    let result = Number.parseInt('123_345');
+                    console.log(result == 123456);
+
+                    let result = Number.parseFloat('0.123_456');
+                    console.log(result == 0.123456);
+                </code></pre>
+                <p>identical specification &amp; restrictions as in Java 8</p>
+            </section>
+            <section>
+                <h2>Numerics: BigInts</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    const massOfEarthInKg = 6_000_000_000_000_000_000_000_000n;
+
+                    let bigInt = typeof 123n;
+                    console.log(bigInt == 'bitInt');
+
+                    let result = BigInt.parseInt('9007199254740993', 10);
+                    console.log(result == 9007199254740993n);
+
+                    console.log(0 == 0n); // false :(
+                </code></pre>
+                <p>identical usage as with any 'number'. Already supported by Chrome</p>
+            </section>
+            <section>
+                <h2>Numerics: Decimals / BigDecimal</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    // float (today)
+                    let float = 0.1 + 0.2;
+                    console.log(float); // 0.30000000000000004 :(
+                    console.log(float = 0.3); // false :(
+
+                    // decimal (proposal)
+                    let decimal = 0.1m + 0.2m;
+                    console.log(decimal); // 0.3m
+                    console.log(decimal = 0.3m); // true
+                </code></pre>
+                <p>identical usage as in all other major languages</p>
+            </section>
+            <section>
+                <h2>Arrays: special elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    let arr = [1, 2, 3, 4, 5, 6, 7];
+
+                    console.log(arr.last == arr[arr.length - 1]);
+                    console.log(arr.first == arr[0]);
+                </code></pre>
+                <p>Convenient access to special elements</p>
+            </section>
+            <section>
+                <h2>Arrays: add/remove multiple elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    // for loop
+                    for (let item in items) {
+                        arr.add(item);
+                    }
+
+                    arr.addAll(items);
+                    arr.addAll(...items);
+                    arr.addAll(item1, item2, ..., itemN);
+                </code></pre>
+                <p>Convenient add/remove of multiple elements</p>
+            </section>
+            <section>
+                <h2>private class elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    class SomeClass {
+                        #xValue = 0; // private field
+                        get #x() { return #xValue; } // private getter
+                        set #x(value) { this.#xValue = value; } // private setter
+                        #someMethod(args) { ... }; // private method
+                    }
+                </code></pre>
+                <p>prefix any class element using '#' to make it private</p>
+            </section>
+            <section>
+                <h2>private class elements</h2>
+                <ul>
+                    <li>clean and stable interfaces</li>
+                    <li>hidden changes under the hood</li>
+                </ul>
+                <p>private methods &amp; fields might have a huge impact</p>
+            </section>
+            <section>
+                <h2>Global Scope</h2>
+                <p>Compatibility issues between backend and frontend JS</p>
+                <div class="tip fragment">stays a little bit longer :(</div>
+            </section>
+            <section>
+                <a href="https://github.com/tc39" target="_blank">More is coming ...</a>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="../lib/js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            { src: '../plugin/markdown/marked.js' },
+            { src: '../plugin/markdown/markdown.js' },
+            { src: '../plugin/notes/notes.js', async: true },
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
