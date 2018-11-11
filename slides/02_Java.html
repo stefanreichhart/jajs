@@ -65,7 +65,7 @@
                 <ul>
                     <li>Local Type Inference</li>
                     <li>Alternative Memory Architectures</li>
-                    <li>String API</li>
+                    <li>String API, ... (~100+ small changes)</li>
                 </ul>
             </section>
             <section>
@@ -275,13 +275,35 @@
                     multi.lines().forEach(System.out::println);
                 </code></pre>
             </section>
+            <section>
+                <h2>Streams</h2>
+                <p><code>not</code> Predicate</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    Stream< String > strings = Stream.of("a", "b", "c");
+
+                    strings.stream()
+                        .filter(string -> !string.isBlank())
+                        .forEach(System.out::println);
+                </code></pre>
+            </section>
+            <section>
+                <h2>Streams</h2>
+                <p><code>not</code> Predicate</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    Stream< String > strings = Stream.of("a", "b", "c");
+
+                    strings
+                            .filter(not(String::isBlank))
+                            .forEach(System.out::println);
+                </code></pre>
+            </section>
         </section>
         <section>
             <section>
                 <h1>Java 12</h1>
                 <p>early access preview</p>
-                <p><code>javac --enable-preview --release 12 ...</code></p>
-                <p><code>java --enable-preview ...</code></p>
+                <p><code>javac --enable-preview --release 12 ...<br/>
+                java --enable-preview ...</code></p>
             </section>
             <section>
                 <h2>Java 12</h2>
