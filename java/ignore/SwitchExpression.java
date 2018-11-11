@@ -21,7 +21,7 @@ public class SwitchExpression {
                 value = 3;
                 break;
         }
-        System.out.print(value);
+        System.out.print(value); // 1
 
     }
 }

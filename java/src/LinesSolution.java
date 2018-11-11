@@ -1,6 +1,6 @@
 import java.util.stream.Stream;
 
-public class Lines {
+public class LinesSolution {
 
     public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class Lines {
         Stream.of(multiline.split("\n")).forEach(System.out::println);
 
         // Java 11+
-
+        multiline.lines().forEach(System.out::println);
 
     }
 }

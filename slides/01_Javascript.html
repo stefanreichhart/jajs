@@ -83,10 +83,10 @@
         <section>
             <section>
                 <h2>ES6 (ES2015) ......... ES2018</h2>
-                <ul>
+                <ul class="grid">
                     <li>Spreading</li>
                     <li>Destructuring</li>
-                    <li>Promise > Observable > Async/Await + Reactive</li>
+                    <li>Promise > Observable > <br/>Async/Await | Reactive</li>
                     <li>Regex Standard</li>
                     <li>String</li>
                     <li>Math</li>
@@ -124,7 +124,7 @@
             <section>
                 <h2>Async/Await</h2>
                 <ul>
-                    <li><a href="https://codesandbox.io/s/211mxx4vlr">Promises, Observables, Async/Await</a></li>
+                    <li><a href="https://codesandbox.io/s/211mxx4vlr" target="_blank">Promises, Observables, Async/Await</a></li>
                     <li>Or go Reactive using concat-operator ?</li>
                 </ul>
             </section>
@@ -140,7 +140,7 @@
                 <h2>String</h2>
                 <ul>
                     <li><a href="https://jsbin.com/bobihidayo/edit?js,console" target="_blank">Padding</a></li>
-                    <li><a href="https://jsbin.com/savuhomose/edit?js,console" target="_blank">Triming</a></li>
+                    <li><a href="https://jsbin.com/savuhomose/edit?js,console" target="_blank">Trimming</a></li>
                     <li><a href="https://jsbin.com/gejurapawa/edit?js,console" target="_blank">Multi-Byte</a></li>
                 </ul>
             </section>
@@ -148,6 +148,7 @@
                 <h2>Math</h2>
                 <ul>
                     <li><a href="https://jsbin.com/gapacitato/edit?js,console" target="_blank">Power / Exp</a></li>
+                    <li><a href="https://jsbin.com/gapacitato/edit?js,console" target="_blank">Min &amp; Max</a></li>
                 </ul>
             </section>
             <section>
@@ -174,14 +175,15 @@
             </section>
             <section>
                 <h2>Native Observables</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     observable.observe(fnObserver)
                 </code></pre>
                 <p>Implemented by various frameworks</br>(e.g Angular 2+, RxJS, rx-lite, ...)</p>
             </section>
             <section>
                 <h2>Optional Chaining Operator ".?"</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    let user = { address: { street: "", }, };
                     let street = null;
 
                     // chaining property access (today)
@@ -189,12 +191,14 @@
 
                     // with optional chaining operator (proposal)
                     street = user?.address?.street;
+                    street = contacts?.getUser(123)?.address?.street;
+                    delete user?.address?.street;
                 </code></pre>
                 <p>Optional Chaining Operator ".?" for properties, expressions and function-calls</p>
             </section>
             <section>
                 <h2>Pipeline Operator "|>"</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     let result = null;
 
                     // pipelining functions (today)
@@ -203,14 +207,14 @@
                     // with pipline operator (proposal)
                     result = string |> doFn1 |> doFn2 |> doFn3 |> doFn4;
                 </code></pre>
-                <p>Pipeline Operator for expressions, array functions, (async) function-calls</p>
+                <p>Pipeline Operator for expressions, array functions, <a href="https://codesandbox.io/s/211mxx4vlr">(async) function-calls</a></p>
             </section>
             <section>
                 <h2>Logical Assignment Operators</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     // or, and with assigments (today)
-                    a || (a = b);
-                    a && (a = b);
+                    a || (a = b); // if (!a) { a = b; }
+                    a && (a = b); // if (a) { a = b; }
 
                     // or, and assigment operators (proposal)
                     a ||= b;
@@ -220,7 +224,7 @@
             </section>
             <section>
                 <h2>Slice Notation</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     const arr = ['a', 'b', 'c', 'd'];
 
                     console.log(arr[1:3] == arr.slice(1,3)); // ['b', 'c']
@@ -236,7 +240,7 @@
             </section>
             <section>
                 <h2>Numerics: Groupings</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     const inhabitantsOfMunich = 1_464_301;
                     const distanceEarthSunInKm = 149_600_000;
                     const massOfElectronInKg = 9.109_383_56e-31;
@@ -252,7 +256,7 @@
             </section>
             <section>
                 <h2>Numerics: BigInts</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     const massOfEarthInKg = 6_000_000_000_000_000_000_000_000n;
 
                     let bigInt = typeof 123n;
@@ -263,11 +267,12 @@
 
                     console.log(0 == 0n); // false :(
                 </code></pre>
-                <p>identical usage as with any 'number'. Already supported by Chrome</p>
+                <p>Already supported by most browsers ('number')</p>
+                <p>Explicit BigInt only by Chrome</p>
             </section>
             <section>
                 <h2>Numerics: Decimals / BigDecimal</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     // float (today)
                     let float = 0.1 + 0.2;
                     console.log(float); // 0.30000000000000004 :(
@@ -282,7 +287,7 @@
             </section>
             <section>
                 <h2>Arrays: special elements</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     let arr = [1, 2, 3, 4, 5, 6, 7];
 
                     console.log(arr.last == arr[arr.length - 1]);
@@ -305,24 +310,22 @@
                 <p>Convenient add/remove of multiple elements</p>
             </section>
             <section>
-                <h2>private class elements</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
+                <h2><code>private</code> class elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     class SomeClass {
                         #xValue = 0; // private field
-                        get #x() { return #xValue; } // private getter
-                        set #x(value) { this.#xValue = value; } // private setter
-                        #someMethod(args) { ... }; // private method
+                        get #x() { // private getter
+                            return #xValue;
+                        }
+                        set #x(value) { // private setter
+                            this.#xValue = value;
+                        }
+                        #someMethod(args) { // private method
+                            ...
+                        };
                     }
                 </code></pre>
                 <p>prefix any class element using '#' to make it private</p>
-            </section>
-            <section>
-                <h2>private class elements</h2>
-                <ul>
-                    <li>clean and stable interfaces</li>
-                    <li>hidden changes under the hood</li>
-                </ul>
-                <p>private methods &amp; fields might have a huge impact</p>
             </section>
             <section>
                 <h2>Global Scope</h2>

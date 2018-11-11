@@ -71,26 +71,60 @@
             <section>
                 <h2>Local Type Inference</h2>
                 <p><code>var</code> keyword (not reserved)</p>
-                <pre><code class="hljs java" data-trim data-noescape>
-                    var number = 5; // int
-                    var bitNumber = BigDecimal.ONE; // BigDecimal
-                    var String = "Hello World !"; // String
-                    var list = new ArrayList< String >(); // List< String >
-                    var var = true; // Boolean
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    int number = 5;
+                    BigDecimal bitNumber = BigDecimal.ONE;
+                    String String = "Hello World !";
+                    boolean var = true;
+                    List< String > list = new ArrayList< String >();
                 </code></pre>
             </section>
             <section>
                 <h2>Local Type Inference</h2>
-                <pre><code class="hljs java" data-trim data-noescape>
-                    var path = Paths.get("./myfile.txt"); // Path
-                    var lines = Files.lines(path); // Stream< String >
-                    var length = lines.count(); // long
+                <p><code>var</code> keyword (not reserved)</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    var number = 5;
+                    var bitNumber = BigDecimal.ONE;
+                    var String = "Hello World !";
+                    var var = true;
+                    var list = new ArrayList< >();
                 </code></pre>
             </section>
             <section>
                 <h2>Local Type Inference</h2>
-                <pre><code class="hljs java" data-trim data-noescape>
-                    var list = new ArrayList< >(); // List< String >
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    Path path = Paths.get("./myfile.txt");
+                    Stream< String > lines = Files.lines(path);
+                    long length = lines.count();
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    var path = Paths.get("./myfile.txt");
+                    var lines = Files.lines(path);
+                    var length = lines.count();
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    List< String > list = new ArrayList< >();
+                    list.add("Hello World!");
+
+                    // for loop
+                    for (String string : list) {
+                        System.out.println(string);
+                    }
+
+                    // foreach, lambda-expression
+                    list.forEach((String string) -> System.out.println(string));
+                </code></pre>
+            </section>
+            <section>
+                <h2>Local Type Inference</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    var list = new ArrayList< >();
                     list.add("Hello World!");
 
                     // for loop
@@ -105,8 +139,9 @@
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
                 <p>Type cannot change after initialization</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     var number = 5; // int
+
 
                     // Compiler-Error: lossy Type conversion
                     number = 7L;
@@ -115,8 +150,9 @@
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
                 <p>Type cannot change after initialization</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     var bitNumber = BigDecimal.ONE;
+
 
                     // Compiler-Error: incompatible types
                     bitNumber = BigInteger.ONE;
@@ -125,7 +161,7 @@
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
                 <p>Not/Never uninitialized</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     // Compiler-Error: uninitialized type
                     var number;
                 </code></pre>
@@ -133,7 +169,7 @@
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
                 <p>Tracking down return types ...</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     var value = someFunction(); // ?
                 </code></pre>
                 <div class="tip fragment">Useful ? Confusing ?</div>
@@ -172,20 +208,58 @@
             <section>
                 <h2>String API</h2>
                 <p>strip*()</p>
-                <pre><code class="hljs java" data-trim data-noescape>
-                    String value = " Hello World ! ";
-                    System.out.println(value.trim().equals("Hello World !"));
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    String value = "     Hello World !     ";
 
-                    // Java 11+
-                    System.out.println(value.strip().equals("Hello World !"));
-                    System.out.println(value.stripLeading().equals("Hello World ! "));
-                    System.out.println(value.stripTrailing().equals(" Hello World !"));
+                    String all = value.trim();
+                    System.out.println("-" + all + "-");
+
+                    String leading = value.replaceFirst("^\\s+", "");
+                    System.out.println("-" + leading + "-");
+
+                    String trailing = value.replaceFirst("\\s+$", "");
+                    System.out.println("-" + trailing + "-");
+                </code></pre>
+            </section>
+            <section>
+                <h2>String API</h2>
+                <p>strip*()</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    String value = "     Hello World !     ";
+
+                    String all = value.strip();
+                    System.out.println("-" + all + "-");
+
+                    String leading = value.stripLeading();
+                    System.out.println("-" + leading + "-");
+
+                    String trailing = value.stripTrailing();
+                    System.out.println("-" + trailing + "-");
                 </code></pre>
             </section>
             <section>
                 <h2>String API</h2>
                 <p>lines()</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    String multi = " Hello\n World\n !\n ";
+
+                    // before Java 8
+                    for (String line : multi.split("\n")) {
+                        System.out.println(line);
+                    }
+
+                    // Java 8+
+                    Stream.of(multi.split("\n"))
+                            .forEach(System.out::println);
+
+                    // Java 11+
+
+                </code></pre>
+            </section>
+            <section>
+                <h2>String API</h2>
+                <p>lines()</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     String multi = " Hello\n World\n !\n ";
 
                     // before Java 8
@@ -219,7 +293,7 @@
             <section>
                 <h2>Raw Strings</h2>
                 <p>Almost all languages support Raw-Strings</p>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs js" data-trim data-noescape contenteditable>
                     String script = "function hello() {\n" +
                     "   print(\'\"Hello World\"\');\n" +
                     "}\n" +
@@ -230,7 +304,7 @@
             </section>
             <section>
                 <h2>Raw Strings - backticks `...`</h2>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs js" data-trim data-noescape contenteditable>
                     String script = `function hello() {
                         print('"Hello World"');
                      }
@@ -238,7 +312,7 @@
                      hello();
                     `;
                 </code></pre>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     `\n`.equals("\\n");
                     `\n`.length == 2;
                     `\n`.unescape().length == 1;
@@ -249,7 +323,7 @@
             </section>
             <section>
                 <h2>switch-expression</h2>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     int value = -1;
                     switch (weekday) {
                         case MONDAY:
@@ -271,7 +345,7 @@
             </section>
             <section>
                 <h2>switch-expression</h2>
-                <pre><code class="hljs java" data-trim data-noescape>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     int value = switch (weekday) {
                         case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1
                         case FRIDAY -> 2
