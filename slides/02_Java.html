@@ -27,11 +27,11 @@
     <div class="slides">
         <section>
             <section>
-                <h1>Java 9 - 11</h1>
+                <h1>Java 9 - 12</h1>
                 <p><cite>"unspectacular, boring, long-overdue"</cite></p>
             </section>
             <section>
-                <h2>Overview: Java 9 - 11</h2>
+                <h2>Overview: Java 9 - 12</h2>
                 <p>Garbage Collection</p>
                 <ul>
                     <li>Bugfixes on G1-GC</li>
@@ -41,7 +41,7 @@
                 </ul>
             </section>
             <section>
-                <h2>Overview: Java 9 - 11</h2>
+                <h2>Overview: Java 9 - 12</h2>
                 <p>Cryptography, Encryption, Security</p>
                 <ul>
                     <li>Elliptic curves</li>
@@ -51,7 +51,7 @@
                 </ul>
             </section>
             <section>
-                <h2>Overview: Java 9 - 11</h2>
+                <h2>Overview: Java 9 - 12</h2>
                 <p>Miscellanea</p>
                 <ul>
                     <li>Jigsaw (Modularisierung, Paketierung)</li>
@@ -61,13 +61,26 @@
                 </ul>
             </section>
             <section>
-                <h1>Java 9 - 11</h1>
+                <h2>Overview : Java 12</h2>
+                <p>early access preview</p>
+                <p><code>javac --enable-preview --release 12 ...<br/>
+                    java --enable-preview ...</code></p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Java 9 - 12</h2>
                 <ul>
                     <li>Local Type Inference</li>
                     <li>Alternative Memory Architectures</li>
+                    <li>Raw Strings</li>
+                    <li>switch-expressions</li>
                     <li>100+ small changes</li>
+                    <li>Deprecation &amp; Cleanup</li>
                 </ul>
             </section>
+        </section>
+        <section>
             <section>
                 <h2>Local Type Inference</h2>
                 <p><code>var</code> keyword (not reserved)</p>
@@ -174,36 +187,137 @@
                 </code></pre>
                 <div class="tip fragment">Useful ? Confusing ?</div>
             </section>
-            <!--
+        </section>
+        <section>
+            <h2>Garbage Collection</h2>
+            <ul>
+                <li>G1 is default for Java 9+ (parallel, single-threaded)</li>
+                <li>Very bad performance for fast growing concurrent collections</li>
+                <li>Change: parallel, multi-threaded</li>
+            </ul>
+            <p><code>-XX:ParallelGCTheads</code></p>
+        </section>
+        <section>
+            <h2>CDS (Class-Data-Sharing)</h2>
+            <ul>
+                <li>Share Class-Metadata across multiple JVM processes</li>
+                <li>Smaller footprint (approx 10%) </li>
+                <li>Faster startup</li>
+            </ul>
+            <p><code>-XX:+UseAppCDS -XX:+SharedArchiveFile=...</code></p>
+            <div class="tip fragment">Useful ?</div>
+        </section>
+        <section>
+            <h2>Object Heap</h2>
+            <p>Until now: Object-Heap only for DRAM</p>
+            <ul>
+                <li>Alternative Memory Architectures (non-DRAM)</li>
+                <li>Support for NV-DIMM (non-volatile)</li>
+                <li>Warning: Only for non-volatile data !</li>
+            </ul>
+            <div class="tip fragment">Nice</div>
+        </section>
+        <section>
             <section>
-                <h2>Garbage Collection</h2>
-                <ul>
-                    <li>G1 is default for Java 9+ (parallel, single-threaded)</li>
-                    <li>Very bad performance for fast growing concurrent collections</li>
-                    <li>Change: parallel, multi-threaded</li>
-                </ul>
-                <p><code>-XX:ParallelGCTheads</code></p>
+                <h2>Raw Strings</h2>
+                <p>Almost all languages support Raw-Strings</p>
+                <pre><code class="hljs js" data-trim data-noescape contenteditable>
+                        String script = "function hello() {\n" +
+                        "   print(\'\"Hello World\"\');\n" +
+                        "}\n" +
+                        "\n" +
+                        "hello();\n";
+                    </code></pre>
+                <p>SQL queries, Templating, Formatted Output, ...</p>
             </section>
             <section>
-                <h2>CDS (Class-Data-Sharing)</h2>
-                <ul>
-                    <li>Share Class-Metadata across multiple JVM processes</li>
-                    <li>Smaller footprint (approx 10%) </li>
-                    <li>Faster startup</li>
-                </ul>
-                <p><code>-XX:+UseAppCDS -XX:+SharedArchiveFile=...</code></p>
-                <div class="tip fragment">Useful ?</div>
+                <h2>Raw Strings - backticks `...`</h2>
+                <pre><code class="hljs js" data-trim data-noescape contenteditable>
+                        String script = `function hello() {
+                            print('"Hello World"');
+                         }
+
+                         hello();
+                        `;
+                    </code></pre>
+                <p>""" Groovy, Kotlin, Python, Scala, Swift, Smalltalk """</p>
+                <p>` Go, Javascript `</p>
             </section>
-            -->
             <section>
-                <h2>Object Heap</h2>
-                <p>Until now: Object-Heap only for DRAM</p>
+                <h2>Raw Strings - backticks `...` - Caveats !</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                        `\n`.equals("\\n");
+                        `\n`.length == 2;
+                        `\n`.unescape().length == 1;
+                        `❤`.equals("\u2764")
+                    </code></pre>
+                <p>""" Groovy, Kotlin, Python, Scala, Swift, Smalltalk """</p>
+                <p>` Go, Javascript `</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>switch-expression</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                        int value = -1;
+                        switch (weekday) {
+                            case MONDAY:
+                            case TUESDAY:
+                            case WEDNESDAY:
+                            case THURDSAY:
+                                value = 1;
+                                break;
+                            case FRIDAY:
+                                value = 2;
+                                break;
+                            case SATURDAY:
+                            case SUNDAY:
+                                value = 3;
+                                break;
+                        }
+                    </code></pre>
+            </section>
+            <section>
+                <h2>switch-expression</h2>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                        int value = switch (weekday) {
+                            case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1
+                            case FRIDAY -> 2
+                            case SATURDAY, SUNDAY -> 3
+                        };
+                    </code></pre>
                 <ul>
-                    <li>Alternative Memory Architectures (non-DRAM)</li>
-                    <li>Support for NV-DIMM (non-volatile)</li>
-                    <li>Warning: Only for non-volatile data !</li>
+                    <li>case allows multiple value matches</li>
+                    <li>"->" does an implicit break + return value</li>
+                    <li>break, continue will not work in switch-expression !</li>
                 </ul>
-                <div class="tip fragment">Nice</div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>100+ small changes</h2>
+            </section>
+            <section>
+                <h2>Streams</h2>
+                <p><code>not</code> Predicate</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    Stream< String > strings = Stream.of("a", "b", "c");
+
+                    strings.stream()
+                        .filter(string -> !string.isBlank())
+                        .forEach(System.out::println);
+                </code></pre>
+            </section>
+            <section>
+                <h2>Streams</h2>
+                <p><code>not</code> Predicate</p>
+                <pre><code class="hljs java" data-trim data-noescape contenteditable>
+                    Stream< String > strings = Stream.of("a", "b", "c");
+
+                    strings
+                            .filter(not(String::isBlank))
+                            .forEach(System.out::println);
+                </code></pre>
             </section>
             <section>
                 <h2>String API</h2>
@@ -275,129 +389,102 @@
                     multi.lines().forEach(System.out::println);
                 </code></pre>
             </section>
+        </section>
+        <section>
+            <h2>Deprecation &amp; Cleanup</h2>
+            <ul>
+                <li><code>deprecated</code> Code/APIs removed</li>
+                <li><strike>Java Applets</strike> (Java Web Start)</li>
+                <li><strike>JavaFX (old versions)</strike> (JavaFX latest or Open-Source)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Beyond Java 12</h2>
+            <p><a href="https://openjdk.java.net/jeps/0" target="_blank">JDK Enhancement Proposals (JEP)</a></p>
+            <ul>
+                <li>Records</li>
+                <li>switch/case with Pattern-matching</li>
+                <li>Immutability, Functional-Style</li>
+                <li>Value vs Reference</li>
+            </ul>
+        </section>
+        <section>
             <section>
-                <h2>Streams</h2>
-                <p><code>not</code> Predicate</p>
+                <h2>Records</h2>
+                <p>Java POJO</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
-                    Stream< String > strings = Stream.of("a", "b", "c");
-
-                    strings.stream()
-                        .filter(string -> !string.isBlank())
-                        .forEach(System.out::println);
+                    public class Person {
+                        private String firstname;
+                        private String lastname;
+                        public String getFirstname() {
+                            return this.firstname;
+                        }
+                        public setFirstname(String firstname) {
+                            this.firstname = firstname;
+                        }
+                        // ...
+                    }
                 </code></pre>
             </section>
             <section>
-                <h2>Streams</h2>
-                <p><code>not</code> Predicate</p>
+                <h2>Records</h2>
+                <p>Proposal only</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
-                    Stream< String > strings = Stream.of("a", "b", "c");
-
-                    strings
-                            .filter(not(String::isBlank))
-                            .forEach(System.out::println);
+                    record Person(String firstame, String lastname);
                 </code></pre>
-            </section>
-            <section>
-                <h2>100+ small changes</h2>
+                <p>One/multiple definitions per file ?</p>
+                <p>Inheritance ?</p>
+                <p>hashCode(), equals(), toString() ?</p>
             </section>
         </section>
         <section>
             <section>
-                <h1>Java 12</h1>
-                <p>early access preview</p>
-                <p><code>javac --enable-preview --release 12 ...<br/>
-                java --enable-preview ...</code></p>
-            </section>
-            <section>
-                <h2>Java 12</h2>
-                <ul>
-                    <li>Raw Strings</li>
-                    <li>switch-expressions</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Raw Strings</h2>
-                <p>Almost all languages support Raw-Strings</p>
-                <pre><code class="hljs js" data-trim data-noescape contenteditable>
-                    String script = "function hello() {\n" +
-                    "   print(\'\"Hello World\"\');\n" +
-                    "}\n" +
-                    "\n" +
-                    "hello();\n";
-                </code></pre>
-                <p>SQL queries, Templating, Formatted Output, ...</p>
-            </section>
-            <section>
-                <h2>Raw Strings - backticks `...`</h2>
-                <pre><code class="hljs js" data-trim data-noescape contenteditable>
-                    String script = `function hello() {
-                        print('"Hello World"');
-                     }
-
-                     hello();
-                    `;
-                </code></pre>
+                <h2>switch/case Pattern-matching</h2>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
-                    `\n`.equals("\\n");
-                    `\n`.length == 2;
-                    `\n`.unescape().length == 1;
-                    `❤`.equals("\u2764")
-                </code></pre>
-                <p>""" Groovy, Kotlin, Python, Scala, Swift, Smalltalk """</p>
-                <p>` Go, Javascript `</p>
-            </section>
-            <section>
-                <h2>switch-expression</h2>
-                <pre><code class="hljs java" data-trim data-noescape contenteditable>
-                    int value = -1;
-                    switch (weekday) {
-                        case MONDAY:
-                        case TUESDAY:
-                        case WEDNESDAY:
-                        case THURDSAY:
-                            value = 1;
-                            break;
-                        case FRIDAY:
-                            value = 2;
-                            break;
-                        case SATURDAY:
-                        case SUNDAY:
-                            value = 3;
-                            break;
+                    String formatted = "";
+                    if (obj instanceof Integer i) {
+                        formatted = "Integer";
+                    } else if (obj instanceof Byte b) {
+                        formatted = "Byte";
+                    } else if (obj instanceof Long l) {
+                        formatted = "Long";
+                    } else if (obj instanceof Double d) {
+                        formatted = "Double");
+                    } else if (obj instanceof String s) {
+                        formatted = "String";
                     }
                 </code></pre>
-                <div class="tip fragment">extraordinary verbose<br/>bad intention<br/>bad code style<br/>...</div>
             </section>
             <section>
-                <h2>switch-expression</h2>
+                <h2>switch/case Pattern-matching</h2>
+                <p>Proposal only</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
-                    int value = switch (weekday) {
-                        case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1
-                        case FRIDAY -> 2
-                        case SATURDAY, SUNDAY -> 3
-                    }
+                    String formatted = switch(obj) {
+                        case Integer i -> "Integer";
+                        case Byte b -> "Byte";
+                        case Long l -> "Long";
+                        case Double d -> "Double";
+                        case String s -> "String";
+                    };
                 </code></pre>
-                <ul>
-                    <li>case allows multiple value matches</li>
-                    <li>"->" does an implicit break + return value</li>
-                    <li>break, continue will not work in switch-expression !</li>
-                </ul>
+                <p>Object-Orientation ?</p>
             </section>
-            <section>
-                <h2>Java 12 - No more ...</h2>
-                <ul>
-                    <li><strike>Java Applets</strike> (Java Web Start)</li>
-                    <li><strike>JavaFX (old versions)</strike> (JavaFX latest or Open-Source)</li>
-                </ul>
-            </section>
+        </section>
+        <section>
+            <h2>Immutability, Functional-Style</h2>
+        </section>
+        <section>
+            <h2>pass by Value vs Reference</h2>
         </section>
         <section>
             <section>
                 <h2>Java Roadmap ...</h2>
                 <ul>
-                    <li><strike>Java as Desktop UI</strike>:<br/><strike>JavaFX latest</strike>, <strike>Swing</strike>, <strike>AWT</strike></li>
-                    <li>WebView, Mobile, Native</li>
+                    <li><strike>Java as Desktop UI</strike></li>
+                    <li><strike>JavaFX latest</strike>, <strike>Swing</strike>, <strike>GWT</strike>, <strike>AWT</strike></li>
+                    <li>WebView, Mobile (?)</li>
                 </ul>
+
             </section>
             <section>
                 <h2>One more thing ...</h2>
@@ -411,7 +498,7 @@
             </section>
         </section>
         <section class="deck-slide">
-            <h1>Questions?</h1>
+            <h2>Questions?</h2>
         </section>
     </div>
 </div>
