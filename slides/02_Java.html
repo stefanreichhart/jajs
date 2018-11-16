@@ -73,6 +73,7 @@
             <section>
                 <h2>Java 9 - 12</h2>
                 <ul class="grid">
+                    <li>Jigsaw</li>
                     <li>Local Type Inference</li>
                     <li>Garbage Collection</li>
                     <li>CDS</li>
@@ -81,6 +82,110 @@
                     <li>switch-expressions</li>
                     <li>100+ small changes</li>
                     <li>Deprecation &amp; Cleanup</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Jigsaw</h2>
+                <p>Goals</p>
+                <ul>
+                    <li>Smaller application bundles</li>
+                    <li>Increase maintainability</li>
+                    <li>Better performance</li>
+                    <li>Deprecate <code>classpath</code> &amp; issues</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw</h2>
+                <p>Inside</p>
+                <ul>
+                    <li>Enhanced <code>javapackager</code></li>
+                    <li>Core: jlink</li>
+                    <li>Principle: Link instead of pack</li>
+                    <li>Only required modules and packages are packed</li>
+                    <li><strike><code>classpath</code></strike> modulepath</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: JAR Applications</h2>
+                <p>Non-Modular</p>
+                <ul>
+                    <li>All JRE modules will be copied</li>
+                    <li>No size reduction</li>
+                    <li>Same JAR as before Jigsaw</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: JAR Applications</h2>
+                <p>Modular</p>
+                <ul>
+                    <li>Use of modulepath, module-info.class</li>
+                    <li>Only required modules will be copied</li>
+                    <li>Size reduction</li>
+                    <li>Not supported by JNLP</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Module</h2>
+                <p>JAR File</p>
+                <ul>
+                    <li>Packages</li>
+                    <li>Resources</li>
+                    <li>Visibility-rules (read, write)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Visibility</h2>
+                <ul>
+                    <li>Nothing exported by default</li>
+                    <li>Explicit rules only (except java.base)</li>
+                    <li>Compile- and Runtime check</li>
+                    <li>Module > Package > Class</li>
+                    <li>No access to non-exported modules/pkgs</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: module-info.java</h2>
+                <p>Module Directives</p>
+                <pre><code class="hljs js" data-trim data-noescape contenteditable>
+                    module modulename {
+                        requires < module >;
+                        requires transitive < module >;
+                        exports < pkg>;
+                        exports < pkg> to < module >;
+                        opens < pkg >; // run-time only
+                        uses < pkg >; // start-time only
+                        provides < pkg >; // start-time only
+                    }
+                </code></pre>
+            </section>
+            <section>
+                <h2>Jigsaw: Module</h2>
+                <p>Important / Good to know</p>
+                <ul>
+                    <li>No circular dependencies</li>
+                    <li>Distinct package naming</li>
+                    <li>Graceful migrations possible</li>
+                    <li>No wildcards !</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Types</h2>
+                <p>Unnamed Module</p>
+                <ul>
+                    <li>everything on <code>classpath</code></li>
+                    <li>reads all</li>
+                    <li>exports all</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Types</h2>
+                <p>Named Module</p>
+                <ul>
+                    <li>Explicit: default</li>
+                    <li>Open: deep reflection (e.g. Spring DI)</li>
+                    <li>Automatic: old-school JARs (~ Unnamed)</li>
                 </ul>
             </section>
         </section>
