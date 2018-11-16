@@ -73,7 +73,7 @@
             <section>
                 <h2>Java 9 - 12</h2>
                 <ul class="grid">
-                    <li>Jigsaw</li>
+                    <li>JPMS</li>
                     <li>Local Type Inference</li>
                     <li>Garbage Collection</li>
                     <li>CDS</li>
@@ -87,13 +87,27 @@
         </section>
         <section>
             <section>
+                <h2>JPMS</h2>
+                <p>Java Platform Module System</p>
+                <p>aka</p>
+                <p>"Jigsaw"</p>
+            </section>
+            <section>
                 <h2>Jigsaw</h2>
                 <p>Goals</p>
                 <ul>
                     <li>Smaller application bundles</li>
                     <li>Increase maintainability</li>
                     <li>Better performance</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw</h2>
+                <p>Goals</p>
+                <ul>
                     <li>Deprecate <code>classpath</code> &amp; issues</li>
+                    <li>Maintaining explicit dependencies</li>
+                    <li>Not a build-tool replacement (Maven, Gradle, ...)</li>
                 </ul>
             </section>
             <section>
@@ -128,7 +142,7 @@
             </section>
             <section>
                 <h2>Jigsaw: Module</h2>
-                <p>JAR File</p>
+                <p>Contents</p>
                 <ul>
                     <li>Packages</li>
                     <li>Resources</li>
@@ -165,9 +179,17 @@
                 <p>Important / Good to know</p>
                 <ul>
                     <li>No circular dependencies</li>
+                    <li>No wildcards/regex</li>
+                    <li>No dynamic versioning</li>
+                    <li>No hot deployments</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Module</h2>
+                <p>Important / Good to know</p>
+                <ul>
                     <li>Distinct package naming</li>
                     <li>Graceful migrations possible</li>
-                    <li>No wildcards !</li>
                 </ul>
             </section>
             <section>
@@ -187,6 +209,15 @@
                     <li>Open: deep reflection (e.g. Spring DI)</li>
                     <li>Automatic: old-school JARs (~ Unnamed)</li>
                 </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Formats</h2>
+                <ul>
+                    <li>jar (source + bytecode)</li>
+                    <li>jmod (same as jar, resources, data, ...)</li>
+                    <li>jimage (optimized for speed/space)</li>
+                </ul>
+                <p>New tools to handle these formats</p>
             </section>
         </section>
         <section>
