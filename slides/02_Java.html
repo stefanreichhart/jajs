@@ -180,8 +180,8 @@
                 <p>Important / Good to know</p>
                 <ul>
                     <li>No circular dependencies</li>
-                    <li>No wildcards/regex</li>
-                    <li>No dynamic versioning</li>
+                    <li>No wildcards / regex</li>
+                    <li>No (dynamic) versioning</li>
                     <li>No hot deployments</li>
                 </ul>
             </section>
@@ -219,6 +219,34 @@
                     <li>jimage (optimized for speed/space)</li>
                 </ul>
                 <p>New tools to handle these formats</p>
+            </section>
+            <section>
+                <h2>Jigsaw: Demo 1 - Manual</h2>
+                <ul>
+                    <li>Doing it manually on the console</li>
+                    <li>Feel the pain :)</li>
+                </ul>
+                <small><a href="https://github.com/stefanreichhart/jajs.git" target="_blank">https://github.com/stefanreichhart/jajs.git</a></small>
+            </section>
+            <section>
+                <h2>Jigsaw: Demo 2 - Maven</h2>
+                <p>Maven Module != Java Module</p>
+                <ul>
+                    <li>Maven: Building / Versioning modules</li>
+                    <li>Jigsaw: Enforce strong encapsulation</li>
+                </ul>
+                <p>Both module-/definitions required !</p>
+                <small><a href="https://github.com/mydeveloperplanet/mymodulesplanet.git" target="_blank">https://github.com/mydeveloperplanet/mymodulesplanet.git</a></small>
+            </section>
+            <section>
+                <h2>Jigsaw: Migration</h2>
+                <ol>
+                    <li>Set Java to version 11</li>
+                    <li>Upgrade all third-party libraries/frameworks<br/><small>tricky: libraries/frameworks using deep reflection (e.g. Spring, DI, Mockito, JPA, JAX, ...)</small></li>
+                    <li>Introduce Java-Modules</li>
+                    <li>Synchronize Java- and Maven-Modules configuration</li>
+                </ol>
+                <a href="https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/" target="_blank">Full Migration Guide</a>
             </section>
         </section>
         <section>
