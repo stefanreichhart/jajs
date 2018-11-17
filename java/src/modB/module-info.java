@@ -1,0 +1,3 @@
+module modB {
+    requires modC;
+}

@@ -164,14 +164,14 @@
                 <h2>Jigsaw: module-info.java</h2>
                 <p>Module Directives</p>
                 <pre><code class="hljs js" data-trim data-noescape contenteditable>
-                    module modulename {
-                        requires < module >;
-                        requires transitive < module >;
-                        exports < pkg>;
-                        exports < pkg> to < module >;
-                        opens < pkg >; // run-time only
-                        uses < pkg >; // start-time only
-                        provides < pkg >; // start-time only
+                    module moduleName {
+                        requires requiredModuleName;
+                        requires transitive requiredModuleName;
+                        exports exportedPackage;
+                        exports exportedPackage to otherModuleName;
+                        opens packageName; // run-time only
+                        uses packageName; // start-time only
+                        provides packageName; // start-time only
                     }
                 </code></pre>
             </section>
@@ -423,9 +423,9 @@
                 <h2>switch-expression</h2>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
                         int value = switch (weekday) {
-                            case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1
-                            case FRIDAY -> 2
-                            case SATURDAY, SUNDAY -> 3
+                            case MONDAY, TUESDAY, WEDNESDAY, THURDSAY, FRIDAY -> 1;
+                            case FRIDAY -> 2;
+                            case SATURDAY, SUNDAY -> 3;
                         };
                     </code></pre>
                 <ul>
@@ -541,7 +541,7 @@
                     <li><strike>JavaFX (all versions)</strike> (https://openjfx.io/)</li>
                     <li><strike>Multilingual Java API Documentation</strike></li>
                     <li><strike>Java Mission Control</strike> (separate Download)</li>
-                    <li><strike>Server JRE</strike></li>
+                    <li><strike>Server JRE</strike> (separate Download)</li>
                 </ul>
             </section>
             <section>
