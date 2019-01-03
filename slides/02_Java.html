@@ -112,6 +112,7 @@
                     <li>Not a build-tool replacement (Maven, Gradle, ...)</li>
                 </ul>
             </section>
+            <!--
             <section>
                 <h2>Jigsaw</h2>
                 <p>Inside</p>
@@ -121,6 +122,23 @@
                     <li>Principle: Link instead of pack</li>
                     <li>Only required modules and packages are packed</li>
                     <li><strike><code>classpath</code></strike> modulepath</li>
+                </ul>
+            </section>
+            -->
+            <section>
+                <h2>Jigsaw: Formats</h2>
+                <ul>
+                    <li>jar (source + bytecode)</li>
+                    <li>jmod (same as jar, resources, data, ...)</li>
+                    <li>jimage (optimized for speed/space)</li>
+                </ul>
+                <p>New tools to handle these formats</p>
+            </section>
+            <section>
+                <h2>Jigsaw: JAR Applications</h2>
+                <ul>
+                    <li>Non-Modular</li>
+                    <li>Modular</li>
                 </ul>
             </section>
             <section>
@@ -136,7 +154,7 @@
                 <h2>Jigsaw: JAR Applications</h2>
                 <p>Modular</p>
                 <ul>
-                    <li>Use of modulepath, module-info.class</li>
+                    <li>Use of <code>modulepath</code>, <code>module-info.class</code></li>
                     <li>Only required modules will be copied</li>
                     <li>Size reduction</li>
                     <li>Not supported by JNLP</li>
@@ -170,9 +188,9 @@
                         requires transitive requiredModuleName;
                         exports exportedPackage;
                         exports exportedPackage to otherModuleName;
-                        opens packageName; // run-time only
                         uses packageName; // start-time only
-                        provides packageName; // start-time only
+                        provides interfaceName with className; // start-time only
+                        opens packageName; // run-time only
                     }
                 </code></pre>
             </section>
@@ -190,8 +208,15 @@
                 <h2>Jigsaw: Module</h2>
                 <p>Important / Good to know</p>
                 <ul>
-                    <li>Distinct package naming</li>
+                    <li>Distinct module &amp; package naming</li>
                     <li>Graceful migrations possible</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Types</h2>
+                <ul>
+                    <li>Unnamed</li>
+                    <li>Named</li>
                 </ul>
             </section>
             <section>
@@ -199,7 +224,7 @@
                 <p>Unnamed Module</p>
                 <ul>
                     <li>everything on <code>classpath</code></li>
-                    <li>reads all</li>
+                    <li>requires all</li>
                     <li>exports all</li>
                 </ul>
             </section>
@@ -207,19 +232,10 @@
                 <h2>Jigsaw: Types</h2>
                 <p>Named Module</p>
                 <ul>
-                    <li>Explicit: default</li>
-                    <li>Open: deep reflection (e.g. Spring DI)</li>
+                    <li>Explicit: default visibility rules</li>
+                    <li><code>opens</code>: deep reflection (e.g. Spring DI)</li>
                     <li>Automatic: old-school JARs (~ Unnamed)</li>
                 </ul>
-            </section>
-            <section>
-                <h2>Jigsaw: Formats</h2>
-                <ul>
-                    <li>jar (source + bytecode)</li>
-                    <li>jmod (same as jar, resources, data, ...)</li>
-                    <li>jimage (optimized for speed/space)</li>
-                </ul>
-                <p>New tools to handle these formats</p>
             </section>
             <section>
                 <h2>Jigsaw: Demo 1 - Manual</h2>
