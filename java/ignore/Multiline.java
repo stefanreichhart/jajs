@@ -10,5 +10,9 @@ public class Multiline {
                 "hello();\n";
         System.out.print(script);
 
+        System.out.println(`\n`.equals("\\n"));
+        System.out.println(`\n`.length() == 2);
+        System.out.println(`❤`.equals("\u2764"));
+
     }
 }

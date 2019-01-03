@@ -320,7 +320,7 @@
             </section>
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
-                <p>Type cannot change after initialization</p>
+                <p>Primitive Type cannot change after initialization</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     var number = 5; // int
 
@@ -331,7 +331,7 @@
             </section>
             <section>
                 <h2>Local Type Inference - Caveats !</h2>
-                <p>Type cannot change after initialization</p>
+                <p>Object Type cannot change after initialization</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
                     var bitNumber = BigDecimal.ONE;
 
@@ -402,6 +402,7 @@
             </section>
             <section>
                 <h2>Raw Strings - backticks `...`</h2>
+                <p><code>--enable-preview --release 12</code></p>
                 <pre><code class="hljs js" data-trim data-noescape contenteditable>
                         String script = `function hello() {
                             print('"Hello World"');
@@ -415,14 +416,12 @@
             </section>
             <section>
                 <h2>Raw Strings - backticks `...` - Caveats !</h2>
+                <p>Escaping &amp; Encoding</p>
                 <pre><code class="hljs java" data-trim data-noescape contenteditable>
                         `\n`.equals("\\n");
-                        `\n`.length == 2;
-                        `\n`.unescape().length == 1;
-                        `❤`.equals("\u2764")
+                        `\n`.length() == 2;
+                        `❤`.equals("\u2764"); // -encoding utf8
                     </code></pre>
-                <p>""" Groovy, Kotlin, Python, Scala, Swift, Smalltalk """</p>
-                <p>` Go, Javascript `</p>
             </section>
         </section>
         <section>
