@@ -33,7 +33,7 @@ public class LocalTypeInference {
         list2.forEach((String string) -> System.out.println(string));
 
         // return type inference
-        Path path = Paths.get("./java/src/myfile.txt");
+        Path path = Paths.get("./java/src2/myfile.txt");
         Stream<String> lines = Files.lines(path);
         long length = lines.count();
 

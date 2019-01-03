@@ -32,7 +32,7 @@ public class LocalTypeInferenceSolution {
         list2.forEach((var string) -> System.out.println(string));
 
         // return type inference
-        var path = Paths.get("./java/src/myfile.txt");
+        var path = Paths.get("./java/src2/myfile.txt");
         var lines = Files.lines(path);
         var length = lines.count();
     }
