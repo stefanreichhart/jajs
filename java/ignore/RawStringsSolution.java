@@ -1,8 +1,8 @@
-public class MultilineSolution {
+public class RawStringsSolution {
     public static void main(String[] args) {
 
-        // "C:\Program Files\Java\jdk-12\bin\javac.exe" -encoding utf8 -Xlint:preview --enable-preview --release 12 MultilineSolution.java
-        // "C:\Program Files\Java\jdk-12\bin\java.exe" --enable-preview MultilineSolution
+        // "C:\Program Files\Java\jdk-12\bin\javac.exe" -encoding utf8 -Xlint:preview --enable-preview --release 12 RawStringsSolution.java
+        // "C:\Program Files\Java\jdk-12\bin\java.exe" --enable-preview RawStringsSolution
         String script2 = `function hello() {
                         print('"Hello World"');
                      }

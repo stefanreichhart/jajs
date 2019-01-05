@@ -57,10 +57,8 @@
                 <p>Miscellanea</p>
                 <ul>
                     <li>JSshell</li>
-                    <li>Jigsaw (Modularisation)</li>
+                    <li>JPMS aka "Jigsaw" (Modularisation)</li>
                     <li>Cleanup &amp; retirement of old/deprecated APIs</li>
-                    <li>Retired: Java EE + Corba</li>
-                    <li>Retired: Nashorn Javascript Engine</li>
                 </ul>
             </section>
             <section>
@@ -68,6 +66,7 @@
                 <p>early access preview</p>
                 <p><code>javac --enable-preview --release 12 ...<br/>
                     java --enable-preview ...</code></p>
+                <p><a href="https://openjdk.java.net/jeps/0" target="_blank">JDK Enhancement Proposals (JEP)</a></p>
             </section>
         </section>
         <section>
@@ -78,7 +77,7 @@
                     <li>Local Type Inference</li>
                     <li>Garbage Collection</li>
                     <li>CDS</li>
-                    <li>Object Heap</li>
+                    <li>Memory Architectures</li>
                     <li>Raw Strings</li>
                     <li>switch-expressions</li>
                     <li>100+ small changes</li>
@@ -112,7 +111,6 @@
                     <li>Not a build-tool replacement (Maven, Gradle, ...)</li>
                 </ul>
             </section>
-            <!--
             <section>
                 <h2>Jigsaw</h2>
                 <p>Inside</p>
@@ -124,7 +122,6 @@
                     <li><strike><code>classpath</code></strike> modulepath</li>
                 </ul>
             </section>
-            -->
             <section>
                 <h2>Jigsaw: Formats</h2>
                 <ul>
@@ -395,8 +392,8 @@
             <div class="tip fragment">Useful ?</div>
         </section>
         <section>
-            <h2>Object Heap</h2>
-            <p>Until now: Object-Heap only for DRAM</p>
+            <h2>Memory Architectures</h2>
+            <p>Until now: Object-Heap only for DRAM (volatile)</p>
             <ul>
                 <li>Alternative Memory Architectures (non-DRAM)</li>
                 <li>Support for NV-DIMM (non-volatile)</li>
@@ -582,19 +579,18 @@
                 <ul>
                     <li><strike>Java Plug-In</strike></li>
                     <li><strike>Java Applets</strike> (Java Web Start)</li>
-                    <li><strike>JavaFX (all versions)</strike> (https://openjfx.io/)</li>
-                    <li><strike>Multilingual Java API Documentation</strike></li>
-                    <li><strike>Java Mission Control</strike> (separate Download)</li>
-                    <li><strike>Server JRE</strike> (separate Download)</li>
+                    <li><strike>Java EE + Corba</strike></li>
+                    <li><strike>Nashorn Javascript Engine</strike></li>
+                    <li><strike>JavaFX (all versions)</strike> (<a href="https://openjfx.io/" target="_blank">https://openjfx.io/</a>)</li>
                 </ul>
             </section>
             <section>
                 <h2>Deprecation &amp; Cleanup</h2>
                 <ul>
-                    <li><code>deprecated</code> Code/APIs removed</li>
-                    <li><code>-XX:+UnlockCommercialFeatures</code></li>
-                    <li><code>-XX:+LogCommercialFeatures</code></li>
-                    <li><code>-XX:+AggressiveOpts</code></li>
+                    <li><strike>deprecated Code/APIs</strike></li>
+                    <li><strike>Multilingual Java API Documentation</strike></li>
+                    <li><strike>Java Mission Control</strike> (separate Download)</li>
+                    <li><strike>Server JRE</strike> (separate Download)</li>
                 </ul>
             </section>
         </section>

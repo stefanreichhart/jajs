@@ -1,8 +1,9 @@
-public class Multiline {
+public class RawStrings {
     public static void main(String[] args) {
 
-        // "C:\Program Files\Java\jdk-12\bin\javac.exe" --enable-preview --release 12 Multiline.java
-        // "C:\Program Files\Java\jdk-12\bin\java.exe" --enable-preview Multiline
+        // "C:\Program Files\Java\jdk-12\bin\javac.exe" -encoding utf8 -Xlint:preview --enable-preview --release 12 RawStrings.java
+        // "C:\Program Files\Java\jdk-12\bin\java.exe" --enable-preview RawStrings
+
         String script = "function hello() {\n" +
                 "   print(\'\"Hello World\"\');\n" +
                 "}\n" +

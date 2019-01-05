@@ -11,8 +11,7 @@ public class LocalTypeInferenceSolution {
 
     public static void main(String[] args) throws IOException {
 
-        // types
-        long neverInitialized; // initial value must be provided when using "var" !
+        // type declarations
         var number = 5;
         var bitNumber = BigDecimal.ONE;
         var String = "Hello World !";
@@ -35,6 +34,10 @@ public class LocalTypeInferenceSolution {
         var path = Paths.get("./java/src2/myfile.txt");
         var lines = Files.lines(path);
         var length = lines.count();
+
+        // not initialized
+        long neverInitialized; // initial value must be provided when using "var" !
+
     }
 
 }

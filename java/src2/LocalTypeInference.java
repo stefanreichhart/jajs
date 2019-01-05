@@ -12,8 +12,7 @@ public class LocalTypeInference {
 
     public static void main(String[] args) throws IOException {
 
-        // types
-        long neverInitialized;
+        // type declarations
         int number = 5;
         BigDecimal bitNumber = BigDecimal.ONE;
         String String = "Hello World !";
@@ -24,7 +23,7 @@ public class LocalTypeInference {
         list.add("Hello World!");
 
         // for loop block-variable
-        List<String> list2 = new ArrayList< >();
+        List<String> list2 = new ArrayList<>();
         for (String string : list2) {
             System.out.println(string);
         }
@@ -36,6 +35,9 @@ public class LocalTypeInference {
         Path path = Paths.get("./java/src2/myfile.txt");
         Stream<String> lines = Files.lines(path);
         long length = lines.count();
+
+        // not initialized
+        long neverInitialized;
 
     }
 
