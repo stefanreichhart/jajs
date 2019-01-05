@@ -123,57 +123,12 @@
                 </ul>
             </section>
             <section>
-                <h2>Jigsaw: Formats</h2>
-                <ul>
-                    <li>jar (source + bytecode)</li>
-                    <li>jmod (same as jar, resources, data, ...)</li>
-                    <li>jimage (optimized for speed/space)</li>
-                </ul>
-                <p>New tools to handle these formats</p>
-            </section>
-            <section>
-                <h2>Jigsaw: JAR Applications</h2>
-                <ul>
-                    <li>Non-Modular</li>
-                    <li>Modular</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Jigsaw: JAR Applications</h2>
-                <p>Non-Modular</p>
-                <ul>
-                    <li>All JRE modules will be copied</li>
-                    <li>No size reduction</li>
-                    <li>Same JAR as before Jigsaw</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Jigsaw: JAR Applications</h2>
-                <p>Modular</p>
-                <ul>
-                    <li>Use of <code>modulepath</code>, <code>module-info.class</code></li>
-                    <li>Only required modules will be copied</li>
-                    <li>Size reduction</li>
-                    <li>Not supported by JNLP</li>
-                </ul>
-            </section>
-            <section>
                 <h2>Jigsaw: Module</h2>
                 <p>Contents</p>
                 <ul>
-                    <li>Packages</li>
+                    <li>Packages &amp; Classes</li>
                     <li>Resources</li>
-                    <li>Visibility-rules (read, write)</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Jigsaw: Visibility</h2>
-                <ul>
-                    <li>Nothing exported by default</li>
-                    <li>Explicit rules only (except java.base)</li>
-                    <li>Compile- and Runtime check</li>
-                    <li>Module > Package > Class</li>
-                    <li>No access to non-exported modules/pkgs</li>
+                    <li>Most important: <strong>Visibility-rules (read, write)</strong></li>
                 </ul>
             </section>
             <section>
@@ -192,6 +147,16 @@
                 </code></pre>
             </section>
             <section>
+                <h2>Jigsaw: Visibility</h2>
+                <ul>
+                    <li>Nothing exported by default</li>
+                    <li>Explicit rules only (except java.base)</li>
+                    <li>Compile- and Runtime check</li>
+                    <li>Lookup: Module > Package > Class</li>
+                    <li>No access to non-exported modules/pkgs</li>
+                </ul>
+            </section>
+            <section>
                 <h2>Jigsaw: Module</h2>
                 <p>Important / Good to know</p>
                 <ul>
@@ -207,6 +172,41 @@
                 <ul>
                     <li>Distinct module &amp; package naming</li>
                     <li>Graceful migrations possible</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Formats</h2>
+                <ul>
+                    <li>jar (source + bytecode)</li>
+                    <li>jmod (same as jar, resources, data, ...)</li>
+                    <li>jimage (optimized for speed/space)</li>
+                </ul>
+                <p>New tools to handle these formats</p>
+            </section>
+            <section>
+                <h2>Jigsaw: Applications</h2>
+                <ul>
+                    <li>Non-Modular</li>
+                    <li>Modular</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Applications</h2>
+                <p>Non-Modular</p>
+                <ul>
+                    <li>All JRE modules will be copied</li>
+                    <li>No size reduction</li>
+                    <li>Same JAR as before Jigsaw</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Jigsaw: Applications</h2>
+                <p>Modular</p>
+                <ul>
+                    <li>Use of <code>modulepath</code>, <code>module-info.class</code></li>
+                    <li>Only required modules will be copied</li>
+                    <li>Size reduction</li>
+                    <li>Warning: Not supported by JNLP</li>
                 </ul>
             </section>
             <section>
