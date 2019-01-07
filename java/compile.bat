@@ -14,7 +14,8 @@ REM destination: out
 REM lookup of other modules: src
 REM module sources for compilation: src
 REM sources for compilation: *.java
-"C:\Program Files\Java\jdk-11.0.1\bin\javac.exe" -d out --module-path src --module-source-path src src\modA\a1\A1.java src\modB\b1\B1.java src\modC\c1\C1.java
+"C:\Program Files\Java\jdk-11.0.1\bin\javac.exe" -d out --module-source-path src src\modA\a1\A1.java src\modB\b1\B1.java src\modC\c1\C1.java
+REM "C:\Program Files\Java\jdk-11.0.1\bin\javac.exe" -d out --module-path src --module-source-path src src\modA\a1\A1.java src\modB\b1\B1.java src\modC\c1\C1.java
 if errorlevel 1 goto :endofscript
 
 echo:
