@@ -93,6 +93,11 @@
                 <p>"Jigsaw"</p>
             </section>
             <section>
+                <h2>Java Modules Workshop</h2>
+                <p>Christian Bonnhoff</p>
+                <p>1 Day Workshop, August 2019</p>
+            </section>
+            <section>
                 <h2>Jigsaw</h2>
                 <p>Goals</p>
                 <ul>
@@ -134,17 +139,26 @@
             <section>
                 <h2>Jigsaw: module-info.java</h2>
                 <p>Module Directives</p>
-                <pre><code class="hljs js" data-trim data-noescape contenteditable>
+                <pre><code class="hljs" data-trim data-noescape contenteditable>
                     module moduleName {
                         requires requiredModuleName;
                         requires transitive requiredModuleName;
+                        requires static requiredModuleName; // optional run-time
                         exports exportedPackage;
                         exports exportedPackage to otherModuleName;
                         uses packageName; // start-time only
                         provides interfaceName with className; // start-time only
                         opens packageName; // run-time only
+                        ...
                     }
                 </code></pre>
+                <!--
+                opens => reflection during run-time only
+                open module => reflection during run-time only (all packages)
+                ... to ...
+                static => required at compile-time, optional at run-time
+                import => instead of full package names
+                -->
             </section>
             <section>
                 <h2>Jigsaw: Visibility</h2>
@@ -261,11 +275,6 @@
                     <li>Synchronize Java- and Maven-Modules configuration</li>
                 </ol>
                 <a href="https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/" target="_blank">Full Migration Guide</a>
-            </section>
-            <section>
-                <h2>Java Modules Workshop</h2>
-                <p>Christian Bonnhoff</p>
-                <p>1 Day, August 2019</p>
             </section>
         </section>
         <section>
