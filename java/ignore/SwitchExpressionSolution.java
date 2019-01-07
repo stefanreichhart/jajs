@@ -12,7 +12,7 @@ public class SwitchExpressionSolution {
             case FRIDAY -> 2;
             case SATURDAY, SUNDAY -> 3;
         };
-        System.out.print(value); // 1
+        System.out.print(value); // expected = 1
 
     }
 }

@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 public class LocalTypeInference {
@@ -17,6 +19,7 @@ public class LocalTypeInference {
         BigDecimal bitNumber = BigDecimal.ONE;
         String String = "Hello World !";
         Boolean var = true;
+        ConcurrentHashMap<Long, HashMap<Integer, java.lang.String>> collection = new ConcurrentHashMap<>();
 
         // generic type inference
         List<String> list = new ArrayList<>();

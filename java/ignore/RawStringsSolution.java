@@ -1,4 +1,5 @@
 public class RawStringsSolution {
+
     public static void main(String[] args) {
 
         // "C:\Program Files\Java\jdk-12\bin\javac.exe" -encoding utf8 -Xlint:preview --enable-preview --release 12 RawStringsSolution.java
@@ -13,7 +14,15 @@ public class RawStringsSolution {
 
         System.out.println(`\n`.equals("\\n"));
         System.out.println(`\n`.length() == 2);
+
+        System.out.println(`\\n`.equals("\\\\n"));
+        System.out.println(`\\n`.length() == 3);
+
+        System.out.println("\n".length() == 1);
+
         System.out.println(`❤`.equals("\u2764"));
+        System.out.println(`❤`.length() == 1);
 
     }
+
 }

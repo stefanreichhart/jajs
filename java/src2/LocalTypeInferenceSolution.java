@@ -4,7 +4,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 public class LocalTypeInferenceSolution {
@@ -16,6 +18,7 @@ public class LocalTypeInferenceSolution {
         var bitNumber = BigDecimal.ONE;
         var String = "Hello World !";
         var var = true;
+        var collection = new ConcurrentHashMap<Long, HashMap<Integer, java.lang.String>>();
 
         // generic type inference
         var list = new ArrayList<String>();

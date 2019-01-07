@@ -1,4 +1,5 @@
 public class Empty {
+
     public static void main(String[] args) {
 
         // "C:\Program Files\Java\jdk-12\bin\javac.exe" --enable-preview --release 12 Empty.java
@@ -6,4 +7,5 @@ public class Empty {
         System.out.print("--- Hello World ---");
 
     }
+    
 }
