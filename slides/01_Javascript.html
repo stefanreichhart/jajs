@@ -91,6 +91,7 @@
                     <li>String</li>
                     <li>Math</li>
                     <li>Arrays</li>
+                    <li>Unused Exceptions</li>
                 </ul>
             </section>
             <section>
@@ -154,22 +155,143 @@
             <section>
                 <h2>Arrays</h2>
                 <ul>
-                    <li><a href="https://jsbin.com/vudokatuji/edit?js,console" target="_blank">Includes</a></li>
+                    <li><a href="https://jsbin.com/hewefupumo/edit?js,console" target="_blank">Includes</a></li>
                 </ul>
+            </section>
+            <section>
+                <h2>Unused Exceptions</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    try { ... } catch (unusedException) { ... }
+                    try { ... } catch { ... } // syntactic sugar
+                </code></pre>
+                <p>feature-detection, (de)serialization, date/time-parsing, regex</p>
             </section>
         </section>
         <section>
             <section>
-                <h2>ES.Next (Stage-1)</h2>
+                <h2>ES.Next (Stage 3)</h2>
+                <ul class="grid">
+                    <li>Lazy Module Loading</li>
+                    <li>Numerics: BigInts</li>
+                    <li>private class elements</li>
+                    <li>Global Scope</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Lazy Module Loading</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    import('./url/to/this/module.js') // regular function call
+                        .promise.then(loadedModule => { ... })
+                        .catch(error => { ... })
+                </code></pre>
+                <p>Implemented by various frameworks</br>(e.g Angular 2+, jQuery, ...)</p>
+                <div class="tip fragment">go native, remove unnecessary dependencies &amp; complexity</div>
+            </section>
+            <section>
+                <h2>Numerics: BigInts</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    const massOfEarthInKg = 6_000_000_000_000_000_000_000_000n;
+
+                    let bigInt = typeof 123n;
+                    console.log(bigInt == 'bitInt');
+
+                    let result = BigInt.parseInt('9007199254740993', 10);
+                    console.log(result == 9007199254740993n);
+
+                    console.log(0 == 0n); // false :(
+                </code></pre>
+                <p>Already supported by most browsers ('safeNumber')</p>
+                <p>Implemented by various frameworks</br>(e.g Big)</p>
+                <div class="tip fragment">go native, remove unnecessary dependencies &amp; complexity</div>
+            </section>
+            <section>
+                <h2><code>private</code> class elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    class SomeClass {
+                        #xValue = 0; // private instance field
+                        get #x() { // private getter
+                            return #xValue;
+                        }
+                        set #x(value) { // private setter
+                            this.#xValue = value;
+                        }
+                        #someMethod(args) { // private method
+                            ...
+                        };
+                    }
+                </code></pre>
+                <p>prefix any class element using '#' to make it private</p>
+            </section>
+            <section>
+                <h2>Global Scope</h2>
+                <p>Compatibility issues between backend and frontend JS</p>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+var getGlobal = function () {
+  if (typeof self !== 'undefined') { return self; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  throw new Error('unable to locate global object');
+};
+var global = getGlobal();
+                </code></pre>
+                <p>More compatible solution:</p>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+var global = globalThis; // syntactic sugar
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>ES.Next (Stage 2)</h2>
+                <ul class="grid">
+                    <li>Temporal API</li>
+                    <li>shorthand throw Expressions</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Temporal API</h2>
+                <ul class="grid">
+                    <li>CivilDate</li>
+                    <li>CivilTime</li>
+                    <li>CivilDateTime</li>
+                    <li>Instant</li>
+                    <li>ZonedInstant</li>
+                </ul>
+                <p>API proposal looks very similar to the new Java Date/Time API:</p>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    let dateTime = new CivilDateTime(2019, 3, 20, 10, 00);
+                    let instant = dateTime.withZone('Switzerland/Bern');
+                    instant.plus({ days: 1, hours: 1, minutes: 1, seconds: 1 });
+                </code></pre>
+            </section>
+            <section>
+                <h2>shorthand throw Expressions</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    1 === 0 ? return true : throw new Error("not true");
+                    var x = 1 || throw new Error("not a valid value");
+                    () => throw new Error("an error occured");
+                </code></pre>
+                instead of ...
+                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
+                    if (1 === 0) {
+                        return true;
+                    } else {
+                        throw new Error("not true");
+                    }
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>ES.Next (Stage 1)</h2>
                 <ul class="grid">
                     <li>Native Observables</li>
                     <li>Optional Chaining Operator</li>
                     <li>Pipeline Operator</li>
                     <li>Logical Assignment Operators</li>
-                    <li>Numerics</li>
                     <li>Arrays</li>
                     <li>Slice Notation</li>
-                    <li>private class elements</li>
                     <li>...</li>
                 </ul>
             </section>
@@ -179,6 +301,7 @@
                     observable.observe(fnObserver)
                 </code></pre>
                 <p>Implemented by various frameworks</br>(e.g Angular 2+, RxJS, rx-lite, ...)</p>
+                <div class="tip fragment">go native, remove unnecessary dependencies &amp; complexity</div>
             </section>
             <section>
                 <h2>Optional Chaining Operator ".?"</h2>
@@ -254,21 +377,30 @@
                 </code></pre>
                 <p>identical specification &amp; restrictions as in Java 8</p>
             </section>
+
             <section>
-                <h2>Numerics: BigInts</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
-                    const massOfEarthInKg = 6_000_000_000_000_000_000_000_000n;
+                <h2>Arrays: add/remove multiple elements</h2>
+                <pre><code class="hljs javascript" data-trim data-noescape>
+                    // for loop
+                    for (let item in items) {
+                        arr.add(item);
+                    }
 
-                    let bigInt = typeof 123n;
-                    console.log(bigInt == 'bitInt');
-
-                    let result = BigInt.parseInt('9007199254740993', 10);
-                    console.log(result == 9007199254740993n);
-
-                    console.log(0 == 0n); // false :(
+                    arr.addAll(items);
+                    arr.addAll(...items);
+                    arr.addAll(item1, item2, ..., itemN);
                 </code></pre>
-                <p>Already supported by most browsers ('number')</p>
-                <p>Explicit BigInt only by Chrome</p>
+                <p>Convenient add/remove of multiple elements</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>ES.Next (Stage 0)</h2>
+                <ul class="grid">
+                    <li>Numerics: Decimals / BigDecimal</li>
+                    <li>Arrays: special elements</li>
+                    <li>...</li>
+                </ul>
             </section>
             <section>
                 <h2>Numerics: Decimals / BigDecimal</h2>
@@ -294,46 +426,6 @@
                     console.log(arr.first == arr[0]);
                 </code></pre>
                 <p>Convenient access to special elements</p>
-            </section>
-            <section>
-                <h2>Arrays: add/remove multiple elements</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape>
-                    // for loop
-                    for (let item in items) {
-                        arr.add(item);
-                    }
-
-                    arr.addAll(items);
-                    arr.addAll(...items);
-                    arr.addAll(item1, item2, ..., itemN);
-                </code></pre>
-                <p>Convenient add/remove of multiple elements</p>
-            </section>
-            <section>
-                <h2><code>private</code> class elements</h2>
-                <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
-                    class SomeClass {
-                        #xValue = 0; // private field
-                        get #x() { // private getter
-                            return #xValue;
-                        }
-                        set #x(value) { // private setter
-                            this.#xValue = value;
-                        }
-                        #someMethod(args) { // private method
-                            ...
-                        };
-                    }
-                </code></pre>
-                <p>prefix any class element using '#' to make it private</p>
-            </section>
-            <section>
-                <h2>Global Scope</h2>
-                <p>Compatibility issues between backend and frontend JS</p>
-                <div class="tip fragment">stays a little bit longer :(</div>
-            </section>
-            <section>
-                <a href="https://github.com/tc39" target="_blank">More is coming ...</a>
             </section>
         </section>
         <section class="deck-slide">
