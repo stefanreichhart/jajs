@@ -149,7 +149,7 @@
                 <h2>Math</h2>
                 <ul>
                     <li><a href="https://jsbin.com/gapacitato/edit?js,console" target="_blank">Power / Exp</a></li>
-                    <li><a href="https://jsbin.com/filuhaluhi/edit?js,console" target="_blank">Min &amp; Max</a></li>
+                    <li><a href="https://jsbin.com/baliquyoha/edit?js,console" target="_blank">Min &amp; Max</a></li>
                 </ul>
             </section>
             <section>
@@ -181,7 +181,7 @@
                 <h2>Lazy Module Loading</h2>
                 <pre><code class="hljs javascript" data-trim data-noescape contenteditable>
                     import('./url/to/this/module.js') // regular function call
-                        .promise.then(loadedModule => { ... })
+                        .then(loadedModule => { ... })
                         .catch(error => { ... })
                 </code></pre>
                 <p>Implemented by various frameworks</br>(e.g Angular 2+, jQuery, ...)</p>
@@ -195,7 +195,7 @@
                     let bigInt = typeof 123n;
                     console.log(bigInt == 'bitInt');
 
-                    let result = BigInt.parseInt('9007199254740993', 10);
+                    let result = BigInt('9007199254740993', 10);
                     console.log(result == 9007199254740993n);
 
                     console.log(0 == 0n); // false :(
