@@ -408,12 +408,12 @@ var global = globalThis; // syntactic sugar
                     // float (today)
                     let float = 0.1 + 0.2;
                     console.log(float); // 0.30000000000000004 :(
-                    console.log(float = 0.3); // false :(
+                    console.log(float == 0.3); // false :(
 
                     // decimal (proposal)
                     let decimal = 0.1m + 0.2m;
                     console.log(decimal); // 0.3m
-                    console.log(decimal = 0.3m); // true
+                    console.log(decimal == 0.3m); // true
                 </code></pre>
                 <p>identical usage as in all other major languages</p>
             </section>
